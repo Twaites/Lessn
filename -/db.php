@@ -4,10 +4,13 @@
 error_reporting(0);
 
 // connect (and install if necessary)
+
+// Added the '`short_link` char(10) unsigned NOT NULL, '.  line - T
 mysql_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
 mysql_select_db(DB_NAME);
 mysql_query('CREATE TABLE IF NOT EXISTS `'.DB_PREFIX.'urls` ( '.
 	'`id` int(11) unsigned NOT NULL auto_increment, '.
+	'`short_link` char(10) NOT NULL, '. 
 	'`url` text character set utf8 collate utf8_unicode_ci NOT NULL, '.
 	'`checksum` int(10) unsigned NOT NULL, '.
 	'PRIMARY KEY  (`id`), '.

@@ -27,7 +27,7 @@ if (isset($_POST['username']))
 		$_COOKIE[COOKIE_NAME] = COOKIE_VALUE;
 	}
 }
-// API login
+// API login 
 else if (isset($_GET['api']) && $_GET['api'] == API_KEY)
 {
 	$_COOKIE[COOKIE_NAME] = COOKIE_VALUE;
@@ -63,21 +63,32 @@ if (isset($_GET['url']) && !empty($_GET['url']))
 	}
 	$checksum 		= sprintf('%u', crc32($url));
 	$escaped_url 	= function_exists('mysql_real_escape_string') ? mysql_real_escape_string($url) : mysql_escape_string($url);
-	if ($result = mysql_query('SELECT `id` FROM `'.DB_PREFIX.'urls` WHERE `checksum`='.$checksum.' AND `url`="'.$escaped_url.'" LIMIT 1'))
+	if ($result = mysql_query('SELECT `short_link` FROM `'.DB_PREFIX.'urls` WHERE `checksum`='.$checksum.' AND `url`="'.$escaped_url.'" LIMIT 1'))
 	{
 		// exists
 		if ($row = mysql_fetch_array($result, MYSQL_ASSOC))
 		{
-			$id = $row['id'];
+			$short_link = $row['short_link']; // Changed it to match the short link. - T
 		}
 		// create
 		else
 		{
-			mysql_query('INSERT INTO `'.DB_PREFIX.'urls` SET `url`="'.$escaped_url.'", `checksum`='.$checksum);
-			$id = mysql_insert_id();
+			$result = mysql_query('SELECT `short_link` FROM `'.DB_PREFIX.'urls` ORDER BY `id` DESC LIMIT 1');
+			$row = mysql_fetch_array($result, MYSQL_ASSOC);
+			$short_link = $row['short_link'];
+			if($short_link == NULL){
+				$short_link = ALPHABETIC_STYLE;
+			}else{
+				$short_link++;
+			}
+			while(in_array($short_link,$blacklist)){
+				$short_link++;
+			}
+			mysql_query('INSERT INTO `'.DB_PREFIX.'urls` SET `url`="'.$escaped_url.'", `checksum`="'.$checksum.'", `short_link`="'.$short_link.'"');
+			
 		}
 	}
-	$new_url = LESSN_URL.base_convert($id, 10, 36);
+	$new_url = LESSN_URL.$short_link;
 	
 	if (isset($_GET['tweet']))
 	{

@@ -7,14 +7,14 @@
 		title="Lessn a link"
 		href="javascript:location.href='<?php echo LESSN_URL; ?>-/?url='+encodeURIComponent(location.href);" 
 		onclick="alert('Drag this bookmarklet onto your browser bar.');return false;">
-		Lessn
-		</a> or <a 
+		Lessn link.
+		</a> <!-- or <a 										// Wasn't going to use this so I disabled it - T
 		title="Lessn and tweet the Lessn'd link"
-		href="javascript:location.href='<?php echo LESSN_URL; ?>-/?tweet&amp;url='+encodeURIComponent(location.href);" 
+		href="javascript:location.href='</? php echo LESSN_URL; ?>-/?tweet&amp;url='+encodeURIComponent(location.href);" 
 		onclick="alert('Drag this bookmarklet onto your browser bar.');return false;">
 		Tweetn
-		</a> bookmarklet.
-		<span>API key: <code><?php echo API_KEY; ?></code></span>
+		</a> bookmarklet. 
+		<span>API key: <code></?php echo API_KEY; ?></code></span>-->
 	</p>
 </form>
 <script>
