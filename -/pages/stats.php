@@ -4,7 +4,7 @@
 <th>Url</th>
 <th>Visits</th>
 <?php
-	$stats=mysql_query('SELECT * FROM `'.DB_PREFIX.'urls`');
+	$stats=mysql_query('SELECT * FROM `'.DB_PREFIX.'urls` ORDER BY `id` ASC');
 	while($stats_row=mysql_fetch_array($stats)){
 		print('<tr id="odd"><td>/'.$stats_row['short_link'].'</td><td class="url">'.$stats_row['url'].'</td><td>'.$stats_row['visits'].'</td></tr>');
 		$stats_row=mysql_fetch_array($stats);
@@ -19,7 +19,7 @@
 <th>Referrer</th>
 <th>Date & Time</th>
 <?php
-	$visit_stats=mysql_query('SELECT * FROM `'.DB_PREFIX.'log`');
+	$visit_stats=mysql_query('SELECT * FROM `'.DB_PREFIX.'log` ORDER BY `datetime` DESC LIMIT 50');
 	while($visit_stats_row=mysql_fetch_array($visit_stats)){
 		print('<tr id="odd"><td>/'.$visit_stats_row['short_link'].'</td><td>'.$visit_stats_row['ip'].'</td><td  class="ref">'.$visit_stats_row['referrer'].'</td><td>'.$visit_stats_row['datetime'].'</td></tr>');
 		$visit_stats_row=mysql_fetch_array($visit_stats);

@@ -110,7 +110,7 @@ td
 }
 .ref
 {
-	width: 230px;
+	width: 210px;
 }
 </style>
 </head>
