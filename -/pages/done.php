@@ -12,4 +12,6 @@ input.focus();
 input.select();
 if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) input.removeAttribute('readonly');
 </script>
-<?php include('stubs/footer.php'); ?>
+<?php
+include('pages/stats.php');
+include('stubs/footer.php'); ?>

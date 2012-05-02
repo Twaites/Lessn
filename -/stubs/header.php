@@ -58,6 +58,60 @@ span code
 {
 	font-size: 10px;
 }
+div{
+	width:800px;
+	margin: auto;
+	padding-top: 20px;
+}
+#linkData
+{
+	float:left;
+	width: 300px;
+}
+#visitData
+{
+	float:right;
+	width:460px;
+}
+table
+{
+	border: solid 1px #333;
+	border-collapse: collapse;
+	text-align: left;
+	
+}
+th
+{
+	font-size: 10px;
+
+}
+tr
+{
+	font-size: 10px;
+	border-bottom: solid 1px #777;
+	background: #999;
+}
+td
+{
+	padding-right:10px;
+}
+#odd
+{
+	background: #eee;
+}
+#even
+{
+	background: #ccc;
+}
+.url
+{
+	width:350px;
+	text-overflow
+}
+.ref
+{
+	width: 230px;
+}
 </style>
 </head>
 <body>

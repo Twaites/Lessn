@@ -106,7 +106,6 @@ if (isset($_GET['url']) && !empty($_GET['url']))
 		echo $new_url;
 		exit();
 	}
-	
 	include('pages/done.php');
 }
 else
